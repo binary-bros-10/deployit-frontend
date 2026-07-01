@@ -1,0 +1,18 @@
+{
+  "pages": {
+    "/deployments/[id]/variables/page": [
+      "static/chunks/ff1a16fafef87110.js",
+      "static/chunks/7dd66bdf8a7e5707.js",
+      "static/chunks/fecfe7b076107a69.css",
+      "static/chunks/705ff729b5df1b92.js",
+      "static/chunks/995e78f873ac6759.js",
+      "static/chunks/2a782e5f61a3722d.js",
+      "static/chunks/b666367de6e2d680.js",
+      "static/chunks/db704ab2a0d20cdf.js",
+      "static/chunks/f8a9db6745e9c4d0.js",
+      "static/chunks/916276f450790128.js",
+      "static/chunks/8082ab48faca5ea1.js",
+      "static/chunks/turbopack-79518032fabf38e1.js"
+    ]
+  }
+}

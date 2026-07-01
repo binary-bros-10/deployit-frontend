@@ -1,0 +1,16 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/account/page": "/account",
+  "/dashboard/page": "/dashboard",
+  "/deployments/[id]/deployments/page": "/deployments/[id]/deployments",
+  "/deployments/[id]/domains/page": "/deployments/[id]/domains",
+  "/deployments/[id]/logs/page": "/deployments/[id]/logs",
+  "/deployments/[id]/page": "/deployments/[id]",
+  "/deployments/[id]/variables/page": "/deployments/[id]/variables",
+  "/deployments/page": "/deployments",
+  "/favicon.ico/route": "/favicon.ico",
+  "/login/page": "/login",
+  "/page": "/",
+  "/settings/page": "/settings",
+  "/signup/page": "/signup"
+}
