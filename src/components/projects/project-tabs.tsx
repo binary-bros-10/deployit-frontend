@@ -4,6 +4,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const tabs = [
   ["Overview", ""],
   ["Deployments", "/deployments"],
+  ["Logs", "/logs"],
   ["Environment Variables", "/variables"],
   ["Domains", "/domains"],
   ["Settings", "#settings"],

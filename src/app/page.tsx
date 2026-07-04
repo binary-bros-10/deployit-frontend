@@ -56,6 +56,31 @@ export default function Home() {
           ))}
         </Card>
       </section>
+      <section className="mx-auto max-w-7xl px-5 py-12">
+        <h2 className="mb-8 text-center text-3xl font-semibold">Simple, transparent pricing</h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            { name: "Free", price: "$0", features: ["1 project", "100GB bandwidth", "Community support"] },
+            { name: "Pro", price: "$20", features: ["10 projects", "1TB bandwidth", "Priority support", "Custom domains"] },
+            { name: "Enterprise", price: "Custom", features: ["Unlimited projects", "Unlimited bandwidth", "Dedicated support", "SSO", "SLA"] },
+          ].map((plan) => (
+            <Card key={plan.name} className="flex flex-col p-6">
+              <h3 className="text-xl font-semibold">{plan.name}</h3>
+              <p className="mt-2 text-3xl font-semibold">{plan.price}<span className="text-sm text-secondary">/month</span></p>
+              <ul className="mt-6 space-y-3 flex-1">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-center gap-2 text-sm text-secondary">
+                    <span className="text-primary">✓</span> {feature}
+                  </li>
+                ))}
+              </ul>
+              <Button asChild className="mt-6 w-full" variant={plan.name === "Pro" ? "default" : "secondary"}>
+                <Link href="/dashboard">Get Started</Link>
+              </Button>
+            </Card>
+          ))}
+        </div>
+      </section>
       <footer className="mx-auto flex max-w-7xl flex-col gap-3 border-t px-5 py-8 text-sm text-secondary sm:flex-row sm:items-center sm:justify-between">
         <p>DeployIt</p>
         <p>Modern deployments for developer teams.</p>

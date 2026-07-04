@@ -11,7 +11,7 @@ import { user } from "@/data/user";
 const items = [
   { label: "Dashboard", href: "/dashboard", icon: BarChart3 },
   { label: "Projects", href: "/projects", icon: Boxes },
-  { label: "Deployments", href: "/projects/atlas-web/deployments", icon: Clock3 },
+  { label: "Deployments", href: "/projects", icon: Clock3 },
   { label: "Settings", href: "/settings", icon: Settings },
   { label: "Account", href: "/account", icon: UserRound },
 ];

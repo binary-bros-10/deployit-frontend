@@ -13,10 +13,10 @@ export default function DashboardPage() {
     <DashboardLayout>
       <PageShell title="Dashboard" description="A fast read on every project, deployment, and production domain.">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <StatCard label="Total Projects" value={String(projects.length)} icon={Boxes} />
-          <StatCard label="Successful Deployments" value={String(deployments.filter((item) => item.status === "Success").length)} icon={CircleCheck} />
-          <StatCard label="Failed Deployments" value={String(deployments.filter((item) => item.status === "Failed").length)} icon={TriangleAlert} />
-          <StatCard label="Active Domains" value={String(domains.filter((item) => item.verified).length)} icon={Globe2} />
+          <StatCard label="Total Projects" value={String(projects.length)} icon={<Boxes size={22} />} />
+          <StatCard label="Successful Deployments" value={String(deployments.filter((item) => item.status === "Success").length)} icon={<CircleCheck size={22} />} />
+          <StatCard label="Failed Deployments" value={String(deployments.filter((item) => item.status === "Failed").length)} icon={<TriangleAlert size={22} />} />
+          <StatCard label="Active Domains" value={String(domains.filter((item) => item.verified).length)} icon={<Globe2 size={22} />} />
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
           <RecentDeployments deployments={deployments} />

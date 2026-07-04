@@ -1,7 +1,8 @@
-import type { LucideIcon } from "lucide-react";
+"use client";
+
 import { Card } from "@/components/ui/card";
 
-export function StatCard({ label, value, icon: Icon }: { label: string; value: string; icon: LucideIcon }) {
+export function StatCard({ label, value, icon }: { label: string; value: string; icon: React.ReactNode }) {
   return (
     <Card>
       <div className="flex items-center justify-between">
@@ -10,7 +11,7 @@ export function StatCard({ label, value, icon: Icon }: { label: string; value: s
           <p className="mt-3 text-3xl font-semibold">{value}</p>
         </div>
         <div className="rounded-md bg-primary p-3 text-surface">
-          <Icon size={22} />
+          {icon}
         </div>
       </div>
     </Card>
