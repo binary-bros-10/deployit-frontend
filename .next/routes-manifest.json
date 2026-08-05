@@ -20,44 +20,44 @@
   },
   "dynamicRoutes": [
     {
-      "page": "/deployments/[id]",
-      "regex": "^/deployments/([^/]+?)(?:/)?$",
+      "page": "/projects/[id]",
+      "regex": "^/projects/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPid": "nxtPid"
       },
-      "namedRegex": "^/deployments/(?<nxtPid>[^/]+?)(?:/)?$"
+      "namedRegex": "^/projects/(?<nxtPid>[^/]+?)(?:/)?$"
     },
     {
-      "page": "/deployments/[id]/deployments",
-      "regex": "^/deployments/([^/]+?)/deployments(?:/)?$",
+      "page": "/projects/[id]/deployments",
+      "regex": "^/projects/([^/]+?)/deployments(?:/)?$",
       "routeKeys": {
         "nxtPid": "nxtPid"
       },
-      "namedRegex": "^/deployments/(?<nxtPid>[^/]+?)/deployments(?:/)?$"
+      "namedRegex": "^/projects/(?<nxtPid>[^/]+?)/deployments(?:/)?$"
     },
     {
-      "page": "/deployments/[id]/domains",
-      "regex": "^/deployments/([^/]+?)/domains(?:/)?$",
+      "page": "/projects/[id]/domains",
+      "regex": "^/projects/([^/]+?)/domains(?:/)?$",
       "routeKeys": {
         "nxtPid": "nxtPid"
       },
-      "namedRegex": "^/deployments/(?<nxtPid>[^/]+?)/domains(?:/)?$"
+      "namedRegex": "^/projects/(?<nxtPid>[^/]+?)/domains(?:/)?$"
     },
     {
-      "page": "/deployments/[id]/logs",
-      "regex": "^/deployments/([^/]+?)/logs(?:/)?$",
+      "page": "/projects/[id]/logs",
+      "regex": "^/projects/([^/]+?)/logs(?:/)?$",
       "routeKeys": {
         "nxtPid": "nxtPid"
       },
-      "namedRegex": "^/deployments/(?<nxtPid>[^/]+?)/logs(?:/)?$"
+      "namedRegex": "^/projects/(?<nxtPid>[^/]+?)/logs(?:/)?$"
     },
     {
-      "page": "/deployments/[id]/variables",
-      "regex": "^/deployments/([^/]+?)/variables(?:/)?$",
+      "page": "/projects/[id]/variables",
+      "regex": "^/projects/([^/]+?)/variables(?:/)?$",
       "routeKeys": {
         "nxtPid": "nxtPid"
       },
-      "namedRegex": "^/deployments/(?<nxtPid>[^/]+?)/variables(?:/)?$"
+      "namedRegex": "^/projects/(?<nxtPid>[^/]+?)/variables(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -86,12 +86,6 @@
       "namedRegex": "^/dashboard(?:/)?$"
     },
     {
-      "page": "/deployments",
-      "regex": "^/deployments(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/deployments(?:/)?$"
-    },
-    {
       "page": "/favicon.ico",
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
@@ -102,6 +96,12 @@
       "regex": "^/login(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/projects",
+      "regex": "^/projects(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/projects(?:/)?$"
     },
     {
       "page": "/settings",

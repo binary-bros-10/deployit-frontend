@@ -2,21 +2,26 @@
 
 import { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
+import { LoadingSpinner } from "@/components/common/loading-spinner";
+import { Skeleton } from "@/components/ui/skeleton";
+import type { DeploymentLog } from "@/lib/deployment-logs";
+import type { LogStreamStatus } from "@/hooks/useDeploymentLogStream";
 
-const logs = [
-  "Cloning repository...",
-  "Installing dependencies...",
-  "Building project...",
-  "Starting container...",
-  "Deployment successful.",
-];
+type LogsTerminalProps = {
+  logs: DeploymentLog[];
+  isLoading?: boolean;
+  isError?: boolean;
+  streamStatus?: LogStreamStatus;
+};
 
-export function LogsTerminal() {
+export function LogsTerminal({ logs, isLoading = false, isError = false, streamStatus = "disconnected" }: LogsTerminalProps) {
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+    if (!isLoading && !isError && logs.length > 0) {
+      endRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [isError, isLoading, logs]);
 
   return (
     <Card className="h-[520px] overflow-auto bg-[#111015] p-0 font-mono deployit-scrollbar">
@@ -24,13 +29,17 @@ export function LogsTerminal() {
         <span className="h-3 w-3 rounded-full bg-red-400" />
         <span className="h-3 w-3 rounded-full bg-primary" />
         <span className="h-3 w-3 rounded-full bg-emerald-400" />
+        <span className="ml-auto text-xs text-secondary">{streamStatus === "connected" ? "Connected" : streamStatus === "connecting" ? "Connecting..." : streamStatus === "reconnecting" ? "Reconnecting..." : "Disconnected"}</span>
       </div>
       <div className="space-y-3 p-5 text-sm">
-        {logs.map((line, index) => (
-          <p key={line} className="text-secondary">
+        {isLoading && <div className="flex items-center gap-2 text-secondary"><LoadingSpinner /> Loading logs...</div>}
+        {isLoading && Array.from({ length: 5 }, (_, index) => <Skeleton key={index} className="h-4 w-full" />)}
+        {!isLoading && isError && <p role="alert" className="text-secondary"><span className="mr-3 text-primary">$</span>Unable to load deployment logs.</p>}
+        {!isLoading && !isError && logs.length === 0 && <p className="text-secondary"><span className="mr-3 text-primary">$</span>No logs available.</p>}
+        {!isLoading && !isError && logs.map((log) => (
+          <p key={log.id} className="text-secondary">
             <span className="mr-3 text-primary">$</span>
-            {line}
-            {index === logs.length - 1 && <span className="ml-2 text-emerald-300">done</span>}
+            {log.message ?? "Log message unavailable"}
           </p>
         ))}
         <div ref={endRef} />

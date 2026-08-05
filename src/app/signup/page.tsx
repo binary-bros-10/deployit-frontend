@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { GitPullRequest, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Zap } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { SignupForm } from "@/components/auth/signup-form";
 
 
 export default function SignupPage() {
@@ -12,11 +12,11 @@ export default function SignupPage() {
           <span className="grid h-9 w-9 place-items-center rounded-md bg-primary text-surface"><Zap size={20} /></span>
           DeployIt
         </Link>
-        <CardTitle className="text-2xl">Sign up with GitHub</CardTitle>
+        <CardTitle className="text-2xl">Create Account</CardTitle>
         <CardDescription className="mt-2">Create an account to start deploying your projects.</CardDescription>
-        <Button asChild className="mt-8 w-full">
-          <Link href="/dashboard"><GitPullRequest size={18} /> Continue with GitHub</Link>
-        </Button>
+        <div className="mt-8">
+          <SignupForm />
+        </div>
         <p className="mt-6 text-center text-sm text-muted-foreground">
           Already have an account?{" "}
           <Link href="/login" className="text-primary hover:underline">

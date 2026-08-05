@@ -3,13 +3,13 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Plus } from "lucide-react";
-import { toast } from "sonner";
+import { Plus, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion } from "framer-motion";
+import { useCreateProject } from "@/hooks/useProjects";
 
 const schema = z.object({
   name: z.string().min(2, "Project name is required"),
@@ -20,13 +20,14 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export function CreateProjectModal() {
+  const { mutate: createProject, isPending } = useCreateProject();
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: { name: "", repository: "", framework: "Next.js" },
   });
 
   function onSubmit(values: FormValues) {
-    toast.success(`${values.name} is queued for creation`);
+    createProject(values);
   }
 
   return (
@@ -49,15 +50,15 @@ export function CreateProjectModal() {
           <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
             <label className="space-y-2 text-sm">
               <span className="text-secondary">Project Name</span>
-              <Input placeholder="atlas-web" {...form.register("name")} />
+              <Input placeholder="atlas-web" {...form.register("name")} disabled={isPending} />
             </label>
             <label className="space-y-2 text-sm">
               <span className="text-secondary">GitHub Repository</span>
-              <Input placeholder="github.com/acme/atlas-web" {...form.register("repository")} />
+              <Input placeholder="github.com/acme/atlas-web" {...form.register("repository")} disabled={isPending} />
             </label>
             <label className="space-y-2 text-sm">
               <span className="text-secondary">Framework</span>
-              <Select defaultValue="Next.js" onValueChange={(value) => form.setValue("framework", value as FormValues["framework"])}>
+              <Select defaultValue="Next.js" onValueChange={(value) => form.setValue("framework", value as FormValues["framework"])} disabled={isPending}>
                 <SelectTrigger><SelectValue /></SelectTrigger>
                 <SelectContent>
                   {["Node.js", "React", "Next.js", "Express"].map((framework) => (
@@ -67,8 +68,10 @@ export function CreateProjectModal() {
               </Select>
             </label>
             <div className="flex justify-end gap-3 pt-2">
-              <DialogClose asChild><Button type="button" variant="secondary">Cancel</Button></DialogClose>
-              <Button type="submit">Create</Button>
+              <DialogClose asChild><Button type="button" variant="secondary" disabled={isPending}>Cancel</Button></DialogClose>
+              <Button type="submit" disabled={isPending}>
+                {isPending ? <Loader2 size={16} className="animate-spin" /> : "Create"}
+              </Button>
             </div>
           </form>
         </motion.div>
